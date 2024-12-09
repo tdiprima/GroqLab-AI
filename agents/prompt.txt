@@ -1,0 +1,39 @@
+import os
+
+from groq import Groq
+
+client = Groq(
+    api_key=os.environ.get("GROQ_API_KEY"),
+)
+
+chat_completion = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "Write a python script that...",
+        }
+    ],
+    model="llama-3.2-3b-preview",
+)
+
+print(chat_completion.choices[0].message.content)
+
+----
+
+I need you to help me turn this into a team of AI agents.
+
+Right now, it is just one API completion from Groq, running the new llama 3.2 model.
+
+However, I want a team of 3 different agents, each of which will be a function wrapping the API call.
+
+It will be a Programming team of agents, with 3 unique agents - you propose which roles are most suited for this team.
+
+Keep it simple, and make sure each agent gets the output from the previous one using simple variables 
+
+And the last agent outputs it as a python file.
+
+The goal of this team of agents is to help me develop any app or script, even if I have no programming skills whatsoever.
+
+So make sure to add enough debugging print statements so the user knows what's happening.
+
+Keep the code clean and easy to understand, with explanatory comments.
