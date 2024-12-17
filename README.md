@@ -1,7 +1,8 @@
-# grok
-Playing with grok
+# GroqLab-AI
 
-Grok is _**fast.**_
+A space for playing with Groq
+
+Groq is _**fast.**_
 
 https://groq.com/
 
