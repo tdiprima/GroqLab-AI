@@ -4,7 +4,7 @@
 ![Languages](https://img.shields.io/github/languages/top/tdiprima/GroqLab-AI)
 ![Contributions](https://img.shields.io/badge/contributions-welcome-brightgreen)
 
-A space for playing with Groq
+Developing innovative solutions using Groq technology.
 
 Groq is _**fast.**_
 

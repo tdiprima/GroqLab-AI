@@ -6,7 +6,7 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 INPUT_FOLDER = "/path/to/your/scripts"
 
-SUPPORTED_FILE_TYPES = [".js", ".py"]
+SUPPORTED_FILE_TYPES = [".js", ".py", ".java"]
 
 
 def process_file(file_path):

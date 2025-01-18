@@ -69,8 +69,7 @@ def save_refactored_code(refactored_code, original_filename):
 
 
 def main():
-    # Example usage with mock data
-    directory_path = "./example_project"  # Replace with your directory
+    directory_path = "./example_project"  # TODO: Replace with your directory
     system_prompt = "You are an expert code analyzer and refactorer. Detect inefficiencies and suggest improvements."
 
     code_files = load_code_from_project_directory(directory_path)
