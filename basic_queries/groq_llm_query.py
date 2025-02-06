@@ -1,4 +1,15 @@
-# python groq_llm_query.py "Hello! Who are you?"
+"""
+python groq_llm_query.py "Hello! Who are you?"
+
+Author: tdiprima
+Version: 1.0
+License: MIT
+"""
+
+__author__ = 'tdiprima'
+__version__ = '1.0'
+__license__ = 'MIT'
+
 import argparse
 import os
 

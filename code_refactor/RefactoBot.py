@@ -1,7 +1,16 @@
 """
 This script analyzes Python code files using Groq AI to detect inefficiencies, suggest improvements,
 refactor the code, and save the optimized versions with a prefixed filename while providing performance metrics.
+
+Author: tdiprima
+Version: 1.0
+License: MIT
 """
+
+__author__ = 'tdiprima'
+__version__ = '1.0'
+__license__ = 'MIT'
+
 import os
 import timeit
 

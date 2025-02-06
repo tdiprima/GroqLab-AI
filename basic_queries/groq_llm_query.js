@@ -1,4 +1,8 @@
-// node groq_llm_query.js "Explain the importance of fast language models"
+/*
+author: tdiprima
+node groq_llm_query.js "Explain the importance of fast language models"
+*/
+
 import Groq from "groq-sdk";
 
 // Initialize Groq client
