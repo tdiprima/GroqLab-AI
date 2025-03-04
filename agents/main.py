@@ -12,8 +12,8 @@ def agent_requirements_gatherer(prompt):
     Agent responsible for gathering requirements from the user.
     """
     print("Agent 1: Gathering requirements...")
-    chat_completion = client.chat.completions.create(messages=[{"role": "user", "content": prompt, }],
-        model="llama-3.2-3b-preview", )
+    chat_completion = client.chat.completions.create(messages=[{"role": "user", "content": "What are the requirements for: " + prompt + ". Do not write the code; only return the requirements." }],
+        model="llama-3.2-3b-preview" )
     requirements = chat_completion.choices[0].message.content
     print("Requirements gathered:", requirements)
     return requirements
@@ -23,9 +23,9 @@ def agent_designer(requirements):
     """
     Agent responsible for designing the application architecture.
     """
-    print("Agent 2: Designing application architecture...")
+    print("\nAgent 2: Designing application architecture...")
     chat_completion = client.chat.completions.create(messages=[{"role": "user",
-        "content": f"Design an application architecture based on the following requirements: {requirements}", }],
+        "content": f"Design an application architecture based on the following requirements: {requirements}. Do not write the code; only return the design.", }],
         model="llama-3.2-3b-preview", )
     design = chat_completion.choices[0].message.content
     print("Application architecture designed:", design)
@@ -36,7 +36,7 @@ def agent_implementer(design):
     """
     Agent responsible for implementing the application code.
     """
-    print("Agent 3: Implementing application code...")
+    print("\nAgent 3: Implementing application code...")
     chat_completion = client.chat.completions.create(messages=[{"role": "user",
         "content": f"Write a Python script based on the following application architecture: {design}", }],
         model="llama-3.2-3b-preview", )
