@@ -35,7 +35,7 @@ Code:
 
     try:
         response = client.chat.completions.create(
-            model="llama3-8b-8192",
+            model="compound-beta-mini",
             messages=[{"role": "system", "content": "You are an expert in analyzing code"},
                       {"role": "user", "content": prompt}]
         )

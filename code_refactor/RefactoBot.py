@@ -34,7 +34,7 @@ def load_code_from_project_directory(directory_path):
 def analyze_code_with_groq(system_prompt, user_prompt):
     """Send code to Groq AI model for analysis and suggestions."""
     try:
-        response = client.chat.completions.create(model="llama3-8b-8192",
+        response = client.chat.completions.create(model="compound-beta-mini",
             messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}])
         return response["choices"][0]["message"]["content"]
     except Exception as e:

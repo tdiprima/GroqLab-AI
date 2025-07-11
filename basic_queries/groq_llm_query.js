@@ -27,7 +27,7 @@ async function main() {
           content: userPrompt,
         },
       ],
-      model: "llama3-8b-8192",
+      model: "compound-beta-mini",
     });
 
     // Print the API response

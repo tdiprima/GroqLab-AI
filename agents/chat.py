@@ -14,7 +14,7 @@ chat_completion = client.chat.completions.create(
             "content": "Explain the importance of fast language models",
         }
     ],
-    model="llama3-8b-8192",
+    model="compound-beta-mini",
 )
 
 print(chat_completion.choices[0].message.content)

@@ -44,7 +44,7 @@ def extract_possible_names_or_urls(content):
         "Do not include any preamble or extra text, just list the extracted names or URLs.")
 
     # Get response from Groq
-    response = client.chat.completions.create(model="llama3-8b-8192", messages=[{"role": "system", "content": prompt},
+    response = client.chat.completions.create(model="compound-beta-mini", messages=[{"role": "system", "content": prompt},
                                                                                 {"role": "user", "content": content[
                                                                                                             :4000]}])  # Limit to 4000 characters
 

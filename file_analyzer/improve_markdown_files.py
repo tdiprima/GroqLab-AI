@@ -24,7 +24,7 @@ OUTPUT_DIR = home_directory + '/path/to/output/files'
 
 def improve_markdown(file_path, output_path):
     """
-    Read a Markdown file, send its content to llama3-8b-8192 for improvement, and save the response.
+    Read a Markdown file, send its content to compound-beta-mini for improvement, and save the response.
     """
     with open(file_path, 'r') as file:
         content = file.read()
@@ -39,8 +39,8 @@ Content:
 """
 
     try:
-        # Call llama3-8b-8192 (or mixtral-8x7b-32768)
-        response = client.chat.completions.create(model="llama3-8b-8192",
+        # Call compound-beta-mini (or mixtral-8x7b-32768)
+        response = client.chat.completions.create(model="compound-beta-mini",
         messages=[
             {"role": "system", "content": "You are an expert in writing and improving markdown content."},
             {"role": "user", "content": prompt}
