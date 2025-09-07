@@ -6,11 +6,12 @@ Version: 1.0
 License: MIT
 """
 
-__author__ = 'tdiprima'
-__version__ = '1.0'
-__license__ = 'MIT'
+__author__ = "tdiprima"
+__version__ = "1.0"
+__license__ = "MIT"
 
 import os
+from pathlib import Path
 
 from groq import Groq
 
@@ -23,8 +24,7 @@ SUPPORTED_FILE_TYPES = [".js", ".py", ".java"]
 
 def process_file(file_path):
     """Analyze the file and print its name and a summary of its functionality."""
-    with open(file_path, "r") as file:
-        content = file.read()
+    content = Path(file_path).read_text()
 
     prompt = f"""You are a code analysis assistant. Please read the following code and summarize its functionality in one sentence. 
     Just write the summary in plain text.
@@ -36,8 +36,10 @@ Code:
     try:
         response = client.chat.completions.create(
             model="compound-beta-mini",
-            messages=[{"role": "system", "content": "You are an expert in analyzing code"},
-                      {"role": "user", "content": prompt}]
+            messages=[
+                {"role": "system", "content": "You are an expert in analyzing code"},
+                {"role": "user", "content": prompt},
+            ],
         )
         summary = response.choices[0].message.content.strip()
         # Print the file name and summary

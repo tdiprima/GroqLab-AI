@@ -6,9 +6,9 @@ Version: 1.0
 License: MIT
 """
 
-__author__ = 'tdiprima'
-__version__ = '1.0'
-__license__ = 'MIT'
+__author__ = "tdiprima"
+__version__ = "1.0"
+__license__ = "MIT"
 
 import argparse
 import os
@@ -18,7 +18,9 @@ from groq import Groq
 
 def main():
     # Set up command-line argument parser
-    parser = argparse.ArgumentParser(description="Send a prompt to the Groq API and get a response.")
+    parser = argparse.ArgumentParser(
+        description="Send a prompt to the Groq API and get a response."
+    )
     parser.add_argument("prompt", type=str, help="The prompt to send to the Groq API.")
     args = parser.parse_args()
 

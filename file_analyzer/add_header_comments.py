@@ -6,11 +6,12 @@ Version: 1.0
 License: MIT
 """
 
-__author__ = 'tdiprima'
-__version__ = '1.0'
-__license__ = 'MIT'
+__author__ = "tdiprima"
+__version__ = "1.0"
+__license__ = "MIT"
 
 import os
+from pathlib import Path
 
 from groq import Groq
 
@@ -26,8 +27,7 @@ SUPPORTED_FILE_TYPES = [".js", ".py"]
 
 def process_file(file_path):
     """Analyze the file and add a header comment summarizing its functionality."""
-    with open(file_path, "r") as file:
-        content = file.read()
+    content = Path(file_path).read_text()
 
     # Construct Groq prompt
     prompt = f"""You are a code analysis assistant. Please read the following code and summarize its functionality in one sentence. 
@@ -39,9 +39,13 @@ def process_file(file_path):
 
     try:
         # Get response from Groq
-        response = client.chat.completions.create(model="compound-beta-mini",
-            messages=[{"role": "system", "content": "You are an expert in analyzing code."},
-                      {"role": "user", "content": prompt}])
+        response = client.chat.completions.create(
+            model="compound-beta-mini",
+            messages=[
+                {"role": "system", "content": "You are an expert in analyzing code."},
+                {"role": "user", "content": prompt},
+            ],
+        )
 
         # Extract the summary from the response
         summary = response.choices[0].message.content.strip()
@@ -56,9 +60,7 @@ def process_file(file_path):
             return
 
         # Write the updated file
-        with open(file_path, "w") as file:
-            file.write(header_comment + content)
-
+        Path(file_path).write_text(header_comment + content)
         print(f"Updated file: {file_path}")
 
     except Exception as e:

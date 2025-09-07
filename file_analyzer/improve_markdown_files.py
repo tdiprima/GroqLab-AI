@@ -6,11 +6,13 @@ Version: 1.0
 License: MIT
 """
 
-__author__ = 'tdiprima'
-__version__ = '1.0'
-__license__ = 'MIT'
+__author__ = "tdiprima"
+__version__ = "1.0"
+__license__ = "MIT"
 
 import os
+from pathlib import Path
+
 from groq import Groq
 
 # Set your Groq API key
@@ -18,17 +20,15 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 # Directory containing Markdown files
 home_directory = os.environ["HOME"]
-MARKDOWN_DIR = home_directory + '/path/to/markdown/files'
-OUTPUT_DIR = home_directory + '/path/to/output/files'
+MARKDOWN_DIR = home_directory + "/path/to/markdown/files"
+OUTPUT_DIR = home_directory + "/path/to/output/files"
 
 
 def improve_markdown(file_path, output_path):
     """
     Read a Markdown file, send its content to compound-beta-mini for improvement, and save the response.
     """
-    with open(file_path, 'r') as file:
-        content = file.read()
-
+    content = Path(file_path).read_text()
     print(f"Processing: {file_path}")
 
     # Construct the OpenAI prompt
@@ -40,19 +40,22 @@ Content:
 
     try:
         # Call compound-beta-mini (or mixtral-8x7b-32768)
-        response = client.chat.completions.create(model="compound-beta-mini",
-        messages=[
-            {"role": "system", "content": "You are an expert in writing and improving markdown content."},
-            {"role": "user", "content": prompt}
-        ])
+        response = client.chat.completions.create(
+            model="compound-beta-mini",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are an expert in writing and improving markdown content.",
+                },
+                {"role": "user", "content": prompt},
+            ],
+        )
 
         # Extract improved content
         improved_content = response.choices[0].message.content
 
         # Save the improved content to the output file
-        with open(output_path, 'w') as output_file:
-            output_file.write(improved_content)
-
+        Path(output_path).write_text(improved_content)
         print(f"Improved content saved to: {output_path}")
 
     except Exception as e:
@@ -63,12 +66,11 @@ def process_markdown_files(input_dir, output_dir):
     """
     Process all Markdown files in the input directory.
     """
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
+    Path(output_dir).mkdir(parents=True, exist_ok=True)
 
     # Iterate through all markdown files in the input directory
     for file_name in os.listdir(input_dir):
-        if file_name.endswith('.md'):
+        if file_name.endswith(".md"):
             input_path = os.path.join(input_dir, file_name)
             output_path = os.path.join(output_dir, file_name)
             improve_markdown(input_path, output_path)

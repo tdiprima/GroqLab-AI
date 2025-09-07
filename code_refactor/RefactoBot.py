@@ -7,12 +7,13 @@ Version: 1.0
 License: MIT
 """
 
-__author__ = 'tdiprima'
-__version__ = '1.0'
-__license__ = 'MIT'
+__author__ = "tdiprima"
+__version__ = "1.0"
+__license__ = "MIT"
 
 import os
 import timeit
+from pathlib import Path
 
 from groq import Groq
 
@@ -34,8 +35,13 @@ def load_code_from_project_directory(directory_path):
 def analyze_code_with_groq(system_prompt, user_prompt):
     """Send code to Groq AI model for analysis and suggestions."""
     try:
-        response = client.chat.completions.create(model="compound-beta-mini",
-            messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}])
+        response = client.chat.completions.create(
+            model="compound-beta-mini",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+        )
         return response["choices"][0]["message"]["content"]
     except Exception as e:
         return str(e)
@@ -72,8 +78,7 @@ def display_results(issues, refactorings, performance_metrics):
 def save_refactored_code(refactored_code, original_filename):
     """Save refactored code to a file named based on the original file."""
     refactored_filename = f"refactored_{original_filename}"
-    with open(refactored_filename, "w") as file:
-        file.write(refactored_code)
+    Path(refactored_filename).write_text(refactored_code)
     print(f"Refactored code saved as: {refactored_filename}")
 
 
