@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "groqlab-ai"
+version = "1.0.0"
+description = "Developing innovative solutions using Groq technology"
+readme = "README.md"
+license = {text = "ISC"}
+authors = [
+    {name = "tdiprima"}
+]
+keywords = ["groq", "ai", "llm", "chat", "api"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: ISC License (ISCL)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "groq>=0.4.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/tdiprima/GroqLab-AI"
+Repository = "https://github.com/tdiprima/GroqLab-AI"
+"Bug Tracker" = "https://github.com/tdiprima/GroqLab-AI/issues"
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "flake8",
+    "mypy",
+    "pytest",
+    "pytest-cov",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["agents*", "basic_queries*", "code_refactor*", "file_analyzer*", "models*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
