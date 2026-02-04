@@ -1,14 +1,6 @@
 """
 Extracts names and URLs from C/C++ source and header files.
-
-Author: tdiprima
-Version: 1.0
-License: MIT
 """
-
-__author__ = "tdiprima"
-__version__ = "1.0"
-__license__ = "MIT"
 
 import os
 

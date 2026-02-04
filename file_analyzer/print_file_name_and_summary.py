@@ -1,14 +1,6 @@
 """
 Instead of re-writing the file, just print the file name and give a brief summary.
-
-Author: tdiprima
-Version: 1.0
-License: MIT
 """
-
-__author__ = "tdiprima"
-__version__ = "1.0"
-__license__ = "MIT"
 
 import os
 from pathlib import Path

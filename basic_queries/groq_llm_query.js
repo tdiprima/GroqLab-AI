@@ -1,5 +1,4 @@
 /*
-author: tdiprima
 node groq_llm_query.js "Explain the importance of fast language models"
 */
 
