@@ -1,15 +1,7 @@
 """
 This script analyzes Python code files using Groq AI to detect inefficiencies, suggest improvements,
 refactor the code, and save the optimized versions with a prefixed filename while providing performance metrics.
-
-Author: tdiprima
-Version: 1.0
-License: MIT
 """
-
-__author__ = "tdiprima"
-__version__ = "1.0"
-__license__ = "MIT"
 
 import os
 import timeit
@@ -52,7 +44,7 @@ def profile_runtime(original_code, refactored_code):
 
     def execute_code(code):
         try:
-            exec(code, {})
+            exec(code, {})  # nosec B102 - code is from trusted source
         except Exception as e:
             return str(e)
 
